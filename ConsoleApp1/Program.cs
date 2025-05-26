@@ -9,7 +9,7 @@ namespace CypherEncrypt
 {
     internal class Program
     {
-        static string Encrypt(string input)
+        static string EncryptDecrypt(string input)
         {
             string letters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -29,31 +29,11 @@ namespace CypherEncrypt
             return encrypted;
         }
 
-        static string Decrypt(string input)
-        {
-            string letters = "abcdefghijklmnopqrstuvwxyz";
-
-            string decrypted = "";
-
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (char.IsLetter(input[i]))
-                {
-                    decrypted += letters[letters.Length - letters.IndexOf(input[i]) - 1].ToString();
-                }
-                else
-                {
-                    decrypted += input[i].ToString();
-                }
-            }
-            return decrypted;
-        }
-
         static void Main(string[] args)
         {
             string msg = Console.ReadLine().ToLower();
 
-            string encrypted = Encrypt(msg);
+            string encrypted = EncryptDecrypt(msg);
 
             Console.WriteLine(encrypted);
 
@@ -63,7 +43,7 @@ namespace CypherEncrypt
 
             string readFromFile = File.ReadAllText(@"C:\Users\User\OneDrive\Desktop\secret.txt");
 
-            Console.Write(Decrypt(readFromFile));
+            Console.Write(EncryptDecrypt(readFromFile));
         }
     }
 }
